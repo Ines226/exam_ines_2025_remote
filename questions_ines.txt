@@ -1,0 +1,63 @@
+
+Questions
+
+
+1- Why did I choose to place the stack before data?
+
+We place the stack before data to avoid problem with overflow of data, and ease debugging. 
+
+
+2- Explain commit 7dccc4f2
+
+This commit aims to solve the problem with a de debug task which takes too much time by adding a new condition with time_after_eq() to avoid overflow. 
+
+
+3- With reference to commit f45bf29b, draft jiffies_to_us() and us_to_jiffies()
+
+static inline unsigned long us_to_jiffies(int us)
+{
+	return(us * HZ) ?: us ? 1 :0;
+}
+
+static inline int jiffies_to_us(unsigned long j)
+{
+	return(j * 1000 * 1000 + HZ/2) / HZ;
+}
+
+The factor of conversion is changing but the idea remains the same. 
+
+
+4- What is the main electrical difference between SPI and I2C?
+
+IF we ignore the fact that both buses have a ground, SPI uses 4 wires and had a better speed than I2C. I2C uses 2 wires. 
+
+
+5- In the TDC board, explain why U7 (which is a DAC with internal sharp
+voltage reference) is connected to GPIO 0-22 and what is the role of R23
+(please disregard the fact that U7 is not mounted in your specimen)
+
+
+
+
+Problems
+
+
+2- Write an API to blink leds and a test program for the TDC board. 
+
+The API corresponds to the blink_led_api.h file. 
+
+
+6- Write an API for neopixels so the application can ask for a string
+of RGB values to be displayed on a WS2812B string; use it to drive our
+3 devices on the TDC board.
+
+The API corresponds to the neopixels_api.h file. 
+
+
+
+
+
+
+
+
+
